@@ -8,8 +8,9 @@ const lowOrHi = document.querySelector(".lowOrHi");
 let randInt = Math.floor(Math.random() * 100) + 1;
 const form = document.querySelector("form");
 const restart = document.createElement("p");
-
 let numGuess = 5;
+let start = 1;
+let end = 100;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -41,16 +42,16 @@ const checkGuess = (g) => {
     lowOrHi.innerHTML = `Congrats You Win!!`;
     endGame();
   } else if (g < randInt) {
-    lowOrHi.innerHTML = `Go higher!`;
+    lowOrHi.innerHTML = calculateBetween(g);
   } else if (g > randInt) {
-    lowOrHi.innerHTML = `Go lower`;
+    lowOrHi.innerHTML = calculateBetween(g);
   }
 };
 
 const displayGuesses = (gues) => {
   guessInput.value = "";
   oldGuesses.innerHTML += `${gues} `;
-  numGuess--;
+  --numGuess;
   remainingGuess.innerHTML = `${numGuess}`;
 };
 
@@ -74,4 +75,13 @@ const newGame = () => {
     guessInput.removeAttribute("disabled");
     startOver.removeChild(restart);
   });
+};
+
+const calculateBetween = function (number) {
+  number >= 1 && number <= 100
+    ? number > randInt
+      ? (end = number)
+      : (start = number)
+    : number;
+  return `Enter between ${start} and ${end}`;
 };
