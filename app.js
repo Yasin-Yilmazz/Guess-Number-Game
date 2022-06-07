@@ -43,7 +43,6 @@ const checkGuess = (g) => {
     endGame();
   } else if (g < randInt) {
     lowOrHi.innerHTML = calculateBetween(g);
-    console.log(randInt);
   } else if (g > randInt) {
     lowOrHi.innerHTML = calculateBetween(g);
   }
