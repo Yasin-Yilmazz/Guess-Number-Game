@@ -74,6 +74,8 @@ const newGame = () => {
     lowOrHi.innerHTML = "";
     guessInput.removeAttribute("disabled");
     startOver.removeChild(restart);
+    start = 1;
+    end = 100;
   });
 };
 
