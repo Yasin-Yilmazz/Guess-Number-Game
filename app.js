@@ -26,7 +26,7 @@ const validateGuess = (guess) => {
   } else if (guess > 100) {
     alert("Please enter a number less than 100!");
   } else {
-    if (numGuess === 1) {
+    if (numGuess === 1 && guess !== randInt) {
       displayGuesses(guess);
       lowOrHi.innerHTML = `Game over! Number was ${randInt}`;
       endGame();
@@ -43,6 +43,7 @@ const checkGuess = (g) => {
     endGame();
   } else if (g < randInt) {
     lowOrHi.innerHTML = calculateBetween(g);
+    console.log(randInt);
   } else if (g > randInt) {
     lowOrHi.innerHTML = calculateBetween(g);
   }
